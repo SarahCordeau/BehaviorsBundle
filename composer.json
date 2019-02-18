@@ -3,6 +3,7 @@
     "description": "Symfony bundle to add dynamics comments",
     "keywords": ["Symfony", "Doctrine", "Behaviors", "Comment", "Commentable"],
     "type": "symfony-bundle",
+    "license": "MIT",
     "authors": [
         {
             "name": "Sarah CORDEAU",
