@@ -1,0 +1,24 @@
+<table class="sco_behaviors_bundle__table sco_behaviors_bundle__table__statistics">
+    <caption class="sco_behaviors_bundle__table__caption">Statistics for comment record</caption>
+
+    <thead class="sco_behaviors_bundle__table__head">
+        <tr>
+            <th>{{ func|upper }}</th>
+            <th>Class name</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+
+    <tbody class="sco_behaviors_bundle__table__body">
+        {% for key, value in stats %}
+            {% for s in value %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ s['class_name'] }}</td>
+                <td>{{ s['class_total'] }}</td>
+            </tr>
+            {% endfor %}
+        {% endfor %}
+    </tbody>
+
+</table>

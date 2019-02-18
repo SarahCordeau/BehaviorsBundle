@@ -1,0 +1,27 @@
+parameters:
+    sco.behaviors_bundle.commentable_subscriber.class: Sco\BehaviorsBundle\EventListener\CommentableSubscriber
+    sco.behaviors_bundle.commentable_subscriber.user_callable.class: Sco\BehaviorsBundle\EventListener\UserCallable
+    sco.behaviors_bundle.commentable_subscriber.user_entity: ~
+    sco.behaviors_bundle.form.comment_form.class: Sco\BehaviorsBundle\Form\CommentForm
+
+services:
+    sco.behaviors_bundle.commentable_subscriber:
+        class: "%sco.behaviors_bundle.commentable_subscriber.class%"
+        public: false
+        arguments:
+            - "@sco.behaviors_bundle.commentable_subscriber.user_callable"
+            - "%sco.behaviors_bundle.commentable_subscriber.user_entity%"
+        tags:
+            - { name: doctrine.event_subscriber }
+
+    sco.behaviors_bundle.commentable_subscriber.user_callable:
+        class: "%sco.behaviors_bundle.commentable_subscriber.user_callable.class%"
+        arguments:
+            - "@service_container"
+        public:  false
+
+    sco.behaviors_bundle.form.comment_form:
+        class: "%sco.behaviors_bundle.form.comment_form.class%"
+        arguments:
+            - '@security.token_storage'
+        tags: [form.type]

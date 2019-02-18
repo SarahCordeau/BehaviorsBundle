@@ -1,0 +1,4 @@
+# config/services_test.yml
+services:
+    _defaults:
+        public: true

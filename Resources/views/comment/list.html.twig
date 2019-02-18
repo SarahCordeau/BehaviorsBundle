@@ -1,0 +1,7 @@
+{% import '@ScoBehaviors/macro/recursive_comment_list_macro.thml.twig' as macro %}
+
+<div class="sco_behaviors_bundle__comment__list__comment">
+    {% for comment in comments %}
+        {{ macro.recursiveCommentList(comment, object, limit) }}
+    {% endfor %}
+</div>

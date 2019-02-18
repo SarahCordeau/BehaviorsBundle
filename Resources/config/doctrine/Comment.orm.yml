@@ -1,0 +1,36 @@
+Sco\BehaviorsBundle\Entity\Comment:
+    type: entity
+    repositoryClass: Sco\BehaviorsBundle\Repository\CommentRepository
+    table: sco_comment
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
+    fields:
+        createdBy:
+            type: string
+            nullable: true
+        createdAt:
+            type: datetime
+        content:
+            type: text
+
+    oneToOne:
+        commentRecord:
+            targetEntity: Sco\BehaviorsBundle\Entity\CommentRecord
+            inversedBy: comment
+            joinColumn:
+                name: comment_record_id
+                referencedColumnName: id
+            cascade: ["persist"]
+
+    oneToMany:
+        children:
+            targetEntity: Sco\BehaviorsBundle\Entity\Comment
+            mappedBy: parent
+
+    manyToOne:
+        parent:
+            targetEntity: Sco\BehaviorsBundle\Entity\Comment
+            inversedBy: children

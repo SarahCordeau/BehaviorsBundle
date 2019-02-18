@@ -1,0 +1,9 @@
+sco_behaviors_bundle_comments_new:
+    path:     /new
+    defaults: { _controller: "ScoBehaviorsBundle:Comment:new" }
+    methods:  [POST]
+
+sco_behaviors_bundle_comments_stat:
+    path:     /statistics
+    defaults: { _controller: "ScoBehaviorsBundle:Comment:statistic" }
+    methods:  [GET]

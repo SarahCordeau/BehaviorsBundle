@@ -1,0 +1,47 @@
+<div class="row" data-id="{{ c.id }}">
+    <div class="col-sm-1 image-content">
+        <div class="thumbnail">
+            <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+        </div>
+    </div>
+
+    <div class="col-sm-11">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {% if c.countParent(c) < limit %}
+                    <div class="pull-right">
+                        <button type="button" class="btn sto_behaviors__comment__list__comment__reply" data-toggle="modal" data-target="#stoBehaviorsCommentModal{{ c.id }}"><i class="fas fa-reply"></i></button>
+                    </div>
+                {% endif %}
+                <div>
+                    <strong>{{ c.createdBy }}</strong> <span class="text-muted">commented at {{ c.createdAt|date('l, d-M-Y H:i') }}</span>
+                </div>
+            </div>
+            <div class="panel-body">
+                {{ c.content|nl2br }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for reply comment form -->
+<div id="stoBehaviorsCommentModal{{ c.id }}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Reply on this comment</h4>
+            </div>
+            <div class="modal-body">
+                {{ render(controller('ScoBehaviorsBundle:Comment:form', {'object': object, 'parentId': c.id})) }}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% block ScoBehaviors_stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/scobehaviors/css/sco_behaviors_main.css') }}">
+{% endblock ScoBehaviors_stylesheets %}
