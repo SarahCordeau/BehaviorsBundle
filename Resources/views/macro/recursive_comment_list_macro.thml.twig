@@ -1,0 +1,15 @@
+{% macro recursiveCommentList(comment, object, limit) %}
+    {% import _self as self %}
+
+    {% include '@ScoBehaviors/comment/partial/comment.html.twig' with {'c': comment, 'object': object, 'limit': limit} %}
+
+    {% if comment.children|length %}
+        <div class="sco_behaviors_bundle__comment__list__children">
+            {% for child in comment.children %}
+                <div class="col-md-offset-2">
+                    {{ self.recursiveCommentList(child, object, limit) }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro recursiveCommentList %}

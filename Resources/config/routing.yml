@@ -1,0 +1,3 @@
+sco_behaviors_bundle_comments:
+    resource: "@ScoBehaviorsBundle/Resources/config/routing/comment.yml"
+    prefix: /sco-behaviors/comments

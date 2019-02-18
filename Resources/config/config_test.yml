@@ -1,0 +1,20 @@
+imports:
+    - { resource: service_test.yml }
+
+parameters:
+    sco.behaviors_bundle.commentable_subscriber.user_entity: Sco\BehaviorsBundle\Tests\Model\UserTest # ~ (default value null)
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        collect: false
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true
+

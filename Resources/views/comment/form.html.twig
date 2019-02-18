@@ -1,0 +1,28 @@
+{% form_theme form '@ScoBehaviors/form/fields.html.twig' %}
+
+<div class="sco_behaviors_bundle__comment__form">
+    {{ form_start(form) }}
+
+    <div class="sco_behaviors_bundle__comment__form__errors__row">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="sco_behaviors_bundle__comment__form__content__row">
+        {{ form_widget(form.content) }}
+        {{ form_errors(form.content) }}
+    </div>
+
+    {% if form.createdBy is defined %}
+    <div class="sco_behaviors_bundle__comment__form__created_by__row">
+        {{ form_widget(form.createdBy) }}
+        {{ form_errors(form.createdBy) }}
+    </div>
+    {% endif %}
+
+    <div class="sco_behaviors_bundle__comment__form__submit__row">
+        {{ form_widget(form.submit) }}
+    </div>
+
+    {{ form_end(form) }}
+
+</div>
